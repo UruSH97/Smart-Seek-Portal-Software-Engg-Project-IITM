@@ -20,7 +20,7 @@ import marko
 import google.generativeai as genai
 import textwrap
 
-GOOGLE_API_KEY = 'AIzaSyAZCfPg4CG778dEtoWW4BwDICXjven5u-k'
+GOOGLE_API_KEY = 'add your api key'
 if GOOGLE_API_KEY:
     genai.configure(api_key=GOOGLE_API_KEY)
 else:
