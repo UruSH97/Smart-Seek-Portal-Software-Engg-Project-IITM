@@ -1,0 +1,1105 @@
+openapi: 3.0.3
+info:
+  title: Team-21 SMART SEEK Portal
+  description: "<h1>Software Engineering Project: Milestone 4</h1>\n<h2>Task: API Endpoints Documentation</h2>\nThis RESTful API manages a SEEK portal like system, including Student Authentication, Assignment Submission(Student), \nCourse Management(Instructor), View Basic Statistics(Admin) and many more.\n<h3>Course: BSCSS3001: Software Engineering</h3>\n<h3>Team 21</h3>\n<h3>Members: \n<ul><li>Sayan Hrik (21f3002833)</li>\n<li>Avijeet Palit (21f1005675)</li>\n<li>Uroosha Rahat (21f1002968)</li>\n<li>Preetam Mukherjee (21f1002436)</li>\n<li>Ayush Singh Rana (21f1005671)</li>\n<li>Ramesh Kumar Chandran (21f2000549)</li>\n<li>Bodhisatwa Bhattacharya(21f1000270)</li>\n<li>Sachin Kumar (21f2000143)</li>\n</ul>\n</h3>\n<h3>Program: BS in Data Science and Applications</h3>\n<h3>Institute: Indian Institute of Technology, Madras</h3>\n<br></br>"
+  version: 1.0.11
+servers:
+- url: http://127.0.0.1:8000/
+  description: Localhost
+tags:
+- name: Student Authentication
+  description: Student Authentication API(Google OAuth)
+- name: Student Dashboard
+  description: Student Dashboard API
+- name: Student Course Page
+  description: Student Course Page API
+- name: Student Non-Programming Assignment
+  description: Student Non-Programming Assignment API
+- name: Student Programming Assignment
+  description: Student Programming Assignment API
+- name: Student Notes
+  description: Student Notes API
+- name: Instructor Dashboard
+  description: Instructor Dashboard API
+- name: View Course Statisitics
+  description: View Course Statisitics API
+- name: Admin Dashboard
+  description: Admin Dashboard API
+- name: View Basic Statistics
+  description: View Basic Statistics API
+- name: Virtual Instructor CRUD
+  description: Virtual Instructor CRUD API
+- name: Sandbox CRUD
+  description: Sandbox CRUD API
+- name: Student Planner CRUD
+  description: Student Planner CRUD API
+- name: Instructor Planner CRUD
+  description: Instructor Planner CRUD API
+- name: Question Generation CRUD
+  description: Question Generation CRUD API
+paths:
+  /get/courses/<int:course_id>:
+    get:
+      tags:
+      - courses
+      description: getting all courses
+      operationId: get_courseId
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/courses'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/courses'
+        '400':
+          description: Invalid ID Supplied
+        '404':
+          description: Course Not Found
+        '405':
+          description: Validation Exception
+  /post/courses/<int:course_id>:
+    post:
+      tags:
+      - courses
+      description: uploading all courses
+      operationId: post_courseId
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/courses'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/courses'
+        '400':
+          description: Invalid ID Supplied
+        '404':
+          description: Course cannot be uploaded
+        '405':
+          description: Validation Exception
+  /put/courses/<int:course_id>:
+    put:
+      tags:
+      - courses
+      description: updating all courses
+      operationId: put_courseId
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/courses'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/courses'
+        '400':
+          description: Invalid ID Supplied
+        '404':
+          description: Course cannot be updated
+        '405':
+          description: Validation Exception
+  /delete/courses/<int:course_id>:
+    delete:
+      tags:
+      - courses
+      description: deleting all courses
+      operationId: delete_courseId
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/courses'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/courses'
+        '400':
+          description: Invalid ID Supplied
+        '404':
+          description: Course cannot be deleted
+        '405':
+          description: Validation Exception
+  /get/modules/<int:module_id>:
+    get:
+      tags:
+      - module
+      description: getting all modules
+      operationId: get_moduleId
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/modules'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/modules'
+        '400':
+          description: Invalid ID Supplied
+        '404':
+          description: Module not found
+        '405':
+          description: Validation Exception
+  /get/enrollments/<int:enrollment_id>:
+    get:
+      tags:
+      - enrollment
+      description: get enrollment by id
+      operationId: post_enrollmentId
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/enrollments'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/enrollments'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Enrollment not found
+        '405':
+          description: Validation Exception
+  /get/lectures/<int:lecture_id>:
+    get:
+      tags:
+      - lecture
+      description: get lecture by id
+      operationId: get_lectureId
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lectures'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/lectures'
+        '400':
+          description: Invalid ID Supplied
+        '404':
+          description: Lecture not found
+        '405':
+          description: Validation Exception
+  /post/lectures/<int:lecture_id>:
+    post:
+      tags:
+      - lecture
+      description: upload lecture by id
+      operationId: post_lectureId
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lectures'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/lectures'
+        '400':
+          description: Invalid ID Supplied
+        '404':
+          description: Lecture cannot be uploaded
+        '405':
+          description: Validation Exception
+  /delete/lectures/<int:lecture_id>:
+    delete:
+      tags:
+      - lecture
+      description: delete lecture by id
+      operationId: delete_lectureId
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lectures'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/lectures'
+        '400':
+          description: Invalid ID Supplied
+        '404':
+          description: Lecture cannot be deleted
+        '405':
+          description: Validation Exception
+  /get/notes/<int:note_id>:
+    get:
+      tags:
+      - note
+      description: get notes by id
+      operationId: get_noteId
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/notes'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/notes'
+        '400':
+          description: Invalid ID Supplied
+        '404':
+          description: Notes not found
+        '405':
+          description: Validation Exception
+  /get/assignments/<int:assignment_id>:
+    get:
+      tags:
+      - assignment
+      description: get assignments by id
+      operationId: assignmentId
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/assignments'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/assignments'
+        '400':
+          description: Invalid ID Supplied
+        '404':
+          description: Assignments not found
+        '405':
+          description: Validation Exception
+  /post/assignments/<int:assignment_id>:
+    post:
+      tags:
+      - assignment
+      description: submit assignments by id
+      operationId: postassignmentId
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/assignments'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/assignments'
+        '400':
+          description: Invalid ID Supplied
+        '404':
+          description: Assignments not submitted
+        '405':
+          description: Validation Exception
+  /put/assignments/<int:assignment_id>:
+    put:
+      tags:
+      - assignment
+      description: update assignments by id
+      operationId: putassignmentId
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/assignments'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/assignments'
+        '400':
+          description: Invalid ID Supplied
+        '404':
+          description: Assignments cannot be updated
+        '405':
+          description: Validation Exception
+  /get/programming_assignments/<int:programming_assignment_id>:
+    get:
+      tags:
+      - programming_assignment
+      description: get programming_assignment by id
+      operationId: programming_assignmentId
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/programmingAssignments'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/programmingAssignments'
+        '400':
+          description: Invalid ID Supplied
+        '404':
+          description: Programming Assignments not found
+        '405':
+          description: Validation Exception
+  /post/programming_assignments/<int:programming_assignment_id>:
+    post:
+      tags:
+      - programming_assignment
+      description: submit programming_assignment by id
+      operationId: postprogramming_assignmentId
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/programmingAssignments'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/programmingAssignments'
+        '400':
+          description: Invalid ID Supplied
+        '404':
+          description: Programming Assignments not submitted
+        '405':
+          description: Validation Exception
+  /put/programming_assignments/<int:programming_assignment_id>:
+    put:
+      tags:
+      - programming_assignment
+      description: put programming_assignment by id
+      operationId: putprogramming_assignmentId
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/programmingAssignments'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/programmingAssignments'
+        '400':
+          description: Invalid ID Supplied
+        '404':
+          description: Programming Assignments cannot be updated
+        '405':
+          description: Validation Exception
+  /get/test_cases/<int:test_case_id>:
+    get:
+      tags:
+      - test_case
+      description: get test_cases by id
+      operationId: test_caseId
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/testcases'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/testcases'
+        '400':
+          description: Invalid ID Supplied
+        '404':
+          description: Test Cases not found
+        '405':
+          description: Validation Exception
+  /get/questions/<int:question_id>:
+    get:
+      tags:
+      - question
+      description: get questions by id
+      operationId: questionId
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/questions'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/questions'
+        '400':
+          description: Invalid ID Supplied
+        '404':
+          description: Questions not found
+        '405':
+          description: Validation Exception
+  /get/submissions/<int:submission_id>:
+    get:
+      tags:
+      - submission
+      description: get submissions by id
+      operationId: submissionId
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/submissions'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/submissions'
+        '400':
+          description: Invalid ID Supplied
+        '404':
+          description: Submissions not found
+        '405':
+          description: Validation Exception
+  /post/submissions/<int:submission_id>:
+    post:
+      tags:
+      - submission
+      description: submit submissions by id
+      operationId: postsubmissionId
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/submissions'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/submissions'
+        '400':
+          description: Invalid ID Supplied
+        '404':
+          description: Submissions not submitted
+        '405':
+          description: Validation Exception
+  /get/virtual_instructor_queries/<int:query_id>:
+    get:
+      tags:
+      - virtual_instructor_query
+      description: get virtual_instructor_queries by id
+      operationId: virtual_instructor_queryId
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/virtualInstructorQueries'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/virtualInstructorQueries'
+        '400':
+          description: Invalid ID Supplied
+        '404':
+          description: Virtual Instructor Query not found
+        '405':
+          description: Validation Exception
+  /post/virtual_instructor_queries/<int:query_id>:
+    post:
+      tags:
+      - virtual_instructor_query
+      description: submit virtual_instructor_queries by id
+      operationId: postvirtual_instructor_queryId
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/virtualInstructorQueries'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/virtualInstructorQueries'
+        '400':
+          description: Invalid ID Supplied
+        '404':
+          description: Virtual Instructor Query not submitted
+        '405':
+          description: Validation Exception
+  /delete/virtual_instructor_queries/<int:query_id>:
+    delete:
+      tags:
+      - virtual_instructor_query
+      description: delete virtual_instructor_queries by id
+      operationId: deletevirtual_instructor_queryId
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/virtualInstructorQueries'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/virtualInstructorQueries'
+        '400':
+          description: Invalid ID Supplied
+        '404':
+          description: Virtual Instructor Query not deleted
+        '405':
+          description: Validation Exception
+  /get/instructor_content_planners/<int:planner_id>:
+    get:
+      tags:
+      - instructor_content_planner
+      description: get instructor_content_planner by id
+      operationId: instructor_content_plannerId
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/instructorContentPlanner'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/instructorContentPlanner'
+        '400':
+          description: Invalid ID Supplied
+        '404':
+          description: Instructor Content Planner not found
+        '405':
+          description: Validation Exception
+  /post/instructor_content_planners/<int:planner_id>:
+    post:
+      tags:
+      - instructor_content_planner
+      description: submit instructor_content_planner by id
+      operationId: postinstructor_content_plannerId
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/instructorContentPlanner'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/instructorContentPlanner'
+        '400':
+          description: Invalid ID Supplied
+        '404':
+          description: Instructor Content Planner not submitted
+        '405':
+          description: Validation Exception
+  /delete/instructor_content_planners/<int:planner_id>:
+    delete:
+      tags:
+      - instructor_content_planner
+      description: delete instructor_content_planner by id
+      operationId: deleteinstructor_content_plannerId
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/instructorContentPlanner'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/instructorContentPlanner'
+        '400':
+          description: Invalid ID Supplied
+        '404':
+          description: Instructor Content Planner not deleted
+        '405':
+          description: Validation Exception
+  /get/student_planners/<int:planner_id>:
+    get:
+      tags:
+      - student_planner
+      description: get student_planner by id
+      operationId: student_plannerId
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/studentPlanner'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/studentPlanner'
+        '400':
+          description: Invalid ID Supplied
+        '404':
+          description: Student Planner not found
+        '405':
+          description: Validation Exception
+  /post/student_planners/<int:planner_id>:
+    post:
+      tags:
+      - student_planner
+      description: submit student_planner by id
+      operationId: poststudent_plannerId
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/studentPlanner'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/studentPlanner'
+        '400':
+          description: Invalid ID Supplied
+        '404':
+          description: Student Planner not submitted
+        '405':
+          description: Validation Exception
+  /delete/student_planners/<int:planner_id>:
+    delete:
+      tags:
+      - student_planner
+      description: delete student_planner by id
+      operationId: deletestudent_plannerId
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/studentPlanner'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/studentPlanner'
+        '400':
+          description: Invalid ID Supplied
+        '404':
+          description: Student Planner not deleted
+        '405':
+          description: Validation Exception
+  /get/course_statistics/<int:statistics_id>:
+    get:
+      tags:
+      - course_statistics
+      description: get course_statistics by id
+      operationId: course_statisticsId
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/courseStatistics'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/courseStatistics'
+        '400':
+          description: Invalid ID Supplied
+        '404':
+          description: Course Statistics not found
+        '405':
+          description: Validation Exception
+  /get/admin_course_management/<int:management_id>:
+    get:
+      tags:
+      - management
+      description: get management by id
+      operationId: managementId
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/adminCourseManagement'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/adminCourseManagement'
+        '400':
+          description: Invalid ID Supplied
+        '404':
+          description: Admin Course Management not found
+        '405':
+          description: Validation Exception
+  /get/student_details_management/<int:management_id>:
+    get:
+      tags:
+      - management
+      description: get management by id
+      operationId: getmanagementId
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/studentDetailsManagement'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/studentDetailsManagement'
+        '400':
+          description: Invalid ID Supplied
+        '404':
+          description: Student Details Management not found
+        '405':
+          description: Validation Exception
+  /get/assignment_status/<int:status_id>:
+    get:
+      tags:
+      - status
+      description: get status by id
+      operationId: statusId
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/assignmentStatus'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/assignmentStatus'
+        '400':
+          description: Invalid ID Supplied
+        '404':
+          description: Assignment Status not found
+        '405':
+          description: Validation Exception
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+  schemas:
+    users:
+      type: object
+      properties:
+        id:
+          type: integer
+        email:
+          type: string
+        password_hash:
+          type: string
+        role_id:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        Is_email_verified:
+          type: boolean
+        created_at:
+          type: string
+        updated_at:
+          type: string
+    roles:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+    userRoles:
+      type: object
+      properties:
+        id:
+          type: integer
+        user_id:
+          type: integer
+        role_id:
+          type: integer
+    courses:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+    enrollments:
+      type: object
+      properties:
+        id:
+          type: integer
+        student_id:
+          type: integer
+        course_id:
+          type: integer
+        status:
+          type: string
+        enrollment_date:
+          type: string
+    modules:
+      type: object
+      properties:
+        id:
+          type: integer
+        course_id:
+          type: integer
+        week:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+    lectures:
+      type: object
+      properties:
+        id:
+          type: integer
+        module_id:
+          type: integer
+        title:
+          type: string
+        content:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+    notes:
+      type: object
+      properties:
+        id:
+          type: integer
+        module_id:
+          type: integer
+        title:
+          type: string
+        content:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+    assignments:
+      type: object
+      properties:
+        id:
+          type: integer
+        module_id:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        due_date:
+          type: string
+    programmingAssignments:
+      type: object
+      properties:
+        id:
+          type: integer
+        assignment_id:
+          type: integer
+        editor_content:
+          type: string
+        sandbox_environment:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        help_button_enabled:
+          type: boolean
+    testcases:
+      type: object
+      properties:
+        id:
+          type: integer
+        programmingAssignmentId:
+          type: integer
+        input:
+          type: string
+        expected_output:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+    questions:
+      type: object
+      properties:
+        id:
+          type: integer
+        assignment_id:
+          type: integer
+        question_text:
+          type: string
+        question_type:
+          type: string
+        correct_answer:
+          type: string
+        options:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+    submissions:
+      type: object
+      properties:
+        id:
+          type: integer
+        assignment_id:
+          type: integer
+        student_id:
+          type: integer
+        feedback:
+          type: string
+        content:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        submission_date:
+          type: string
+        grade:
+          type: integer
+    virtualInstructorQueries:
+      type: object
+      properties:
+        id:
+          type: integer
+        student_id:
+          type: integer
+        query:
+          type: string
+        response:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+    instructorContentPlanner:
+      type: object
+      properties:
+        id:
+          type: integer
+        instructor_id:
+          type: integer
+        course_outline:
+          type: string
+        gen_ai_resources:
+          type: string
+        difficulty_level:
+          type: string
+        gen_ai_questions:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+    courseStatistics:
+      type: object
+      properties:
+        id:
+          type: integer
+        course_id:
+          type: integer
+        total_students:
+          type: integer
+        total_modules:
+          type: integer
+        average_marks:
+          type: integer
+        created_at:
+          type: string
+        updated_at:
+          type: string
+    adminCourseManagement:
+      type: object
+      properties:
+        id:
+          type: integer
+        admin_id:
+          type: integer
+        course_id:
+          type: integer
+        action:
+          type: string
+        action_date:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+    studentDetailsManagement:
+      type: object
+      properties:
+        id:
+          type: integer
+        admin_id:
+          type: integer
+        student_id:
+          type: integer
+        course_id:
+          type: integer
+        action:
+          type: string
+        action_date:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+    assignmentStatus:
+      type: object
+      properties:
+        id:
+          type: integer
+        admin_id:
+          type: integer
+        student_id:
+          type: integer
+        assignment_id:
+          type: integer
+        status:
+          type: string
+        feedback:
+          type: string
+        authenticity:
+          type: boolean
+        created_at:
+          type: string
+        updated_at:
+          type: string
+    studentPlanner:
+      type: object
+      properties:
+        id:
+          type: integer
+        student_id:
+          type: integer
+        course_outline:
+          type: string
+        gen_ai_resources:
+          type: string
+        difficulty_level:
+          type: string
+        gen_ai_questions:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
